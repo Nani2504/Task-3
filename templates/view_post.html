@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Blog Application{% endblock %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    {% if post.image %}
+        <img src="{{ url_for('static', filename='uploads/' + post.image) }}" alt="Post Image">
+    {% endif %}
+    <p>{{ post.content }}</p>
+    <div class="post-meta">
+        <span>{{ post.likes }} Likes</span>
+        <span>{{ post.views }} Views</span>
+    </div>
+    <a href="{{ url_for('like_post', post_id=post.id) }}">Like</a>
+{% endblock %}
